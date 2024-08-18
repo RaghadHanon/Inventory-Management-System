@@ -36,6 +36,33 @@ namespace Inventory_Management_System.InventoryManagement
 
 
         }
+        // Edit an existing product
+        public void EditProduct(string name, string newName = null, decimal? newPrice = null, Currency? newCurrency = null, int? newQuantity = null)
+        {
+            var product = FindProductByName(name);
+            if (product == null)
+            {
+                Log($"\nProduct '{name}' not found.");
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(newName))
+            {
+                product.Name = newName;
+            }
+            if (newPrice != null && newCurrency != null)
+            {
+                var newProductPrice = new Price(newPrice.Value, newCurrency.Value);
+                product.UpdatePrice(newProductPrice);
+            }
+            if (newQuantity != null) product.Quantity = newQuantity.Value;
+
+        }
+        // Helper method to find a product by name
+        private Product FindProductByName(string name)
+        {
+            return products.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
         private void Log(string message)
         {
             Console.WriteLine($"{message}");

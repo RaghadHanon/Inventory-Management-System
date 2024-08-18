@@ -24,12 +24,15 @@ namespace Inventory_Management_System
 
             do
             {
-                Console.WriteLine("---------------------- Inventory Management System ----------------------");
+                Console.WriteLine("\n---------------------- Inventory Management System ----------------------\n");
 
 
-                Console.WriteLine("1. Add a product");
+                ViewAllProducts();
+
+                Console.WriteLine("\n1. Add a product");
                 Console.WriteLine("2. View all products");
-                Console.Write("Please select an option (1 - 2): ");
+                Console.WriteLine("3. Edit a product");
+                Console.Write("Please select an option (1 - 3): ");
 
                 string choice = Console.ReadLine();
 
@@ -41,6 +44,9 @@ namespace Inventory_Management_System
                     case "2":
                         ViewAllProducts();
                         break;
+                    case "3":
+                        EditProduct();
+                        break;
                     default:
                         Console.WriteLine("Invalid option. Please try again.\n");
                         break;
@@ -49,7 +55,6 @@ namespace Inventory_Management_System
         }
         static void AddProduct()
         {
-            ViewAllProducts();
             Console.Write("Enter product name (more than 2 characters): ");
             string name = Console.ReadLine();
 
@@ -69,6 +74,31 @@ namespace Inventory_Management_System
         {
             inventory.ViewAllProducts();
             Console.WriteLine();
+        }
+
+        static void EditProduct()
+        {
+            ViewAllProducts();
+            Console.Write("Enter the name of the product you want to edit: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter new product name (or press Enter to skip): ");
+            string? newName = Console.ReadLine();
+            newName = string.IsNullOrWhiteSpace(newName) ? null : newName;
+
+            Console.Write("Enter new product price (or press Enter to skip): ");
+            string? priceInput = Console.ReadLine();
+            decimal? newPrice = !string.IsNullOrEmpty(priceInput) ? Convert.ToDecimal(priceInput) : (decimal?)null;
+
+            Console.Write("Enter new currency (Dollar/Euro/Pound or press Enter to skip): ");
+            string? currencyInput = Console.ReadLine();
+            Currency? newCurrency = !string.IsNullOrEmpty(currencyInput) ? (Currency)Enum.Parse(typeof(Currency), currencyInput, true) : (Currency?)null;
+
+            Console.Write("Enter new product quantity (or press Enter to skip): ");
+            string? quantityInput = Console.ReadLine();
+            int? newQuantity = !string.IsNullOrEmpty(quantityInput) ? Convert.ToInt32(quantityInput) : (int?)null;
+
+            inventory.EditProduct(name, newName, newPrice, newCurrency, newQuantity);
         }
     }
 }

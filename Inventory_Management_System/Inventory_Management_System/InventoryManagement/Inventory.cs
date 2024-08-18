@@ -63,6 +63,19 @@ namespace Inventory_Management_System.InventoryManagement
         {
             return products.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
         }
+        // Delete a product from the inventory
+        public void DeleteProduct(string name)
+        {
+            var product = FindProductByName(name);
+            if (product == null)
+            {
+                Console.WriteLine($"Product '{name}' not found.");
+                return;
+            }
+
+            products.Remove(product);
+
+        }
         private void Log(string message)
         {
             Console.WriteLine($"{message}");

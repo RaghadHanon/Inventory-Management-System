@@ -32,7 +32,8 @@ namespace Inventory_Management_System
                 Console.WriteLine("\n1. Add a product");
                 Console.WriteLine("2. View all products");
                 Console.WriteLine("3. Edit a product");
-                Console.Write("Please select an option (1 - 3): ");
+                Console.WriteLine("4. Delete a product");
+                Console.Write("Please select an option (1 - 4): ");
 
                 string choice = Console.ReadLine();
 
@@ -46,6 +47,9 @@ namespace Inventory_Management_System
                         break;
                     case "3":
                         EditProduct();
+                        break;
+                    case "4":
+                        DeleteProduct();
                         break;
                     default:
                         Console.WriteLine("Invalid option. Please try again.\n");
@@ -99,6 +103,13 @@ namespace Inventory_Management_System
             int? newQuantity = !string.IsNullOrEmpty(quantityInput) ? Convert.ToInt32(quantityInput) : (int?)null;
 
             inventory.EditProduct(name, newName, newPrice, newCurrency, newQuantity);
+        }
+        static void DeleteProduct()
+        {
+            Console.Write("Enter the name of the product you want to delete: ");
+            string name = Console.ReadLine();
+            inventory.DeleteProduct(name);
+
         }
     }
 }

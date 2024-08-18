@@ -18,6 +18,24 @@ namespace Inventory_Management_System.InventoryManagement
             products.Add(product);
 
         }
+        // View all products in the inventory
+        public void ViewAllProducts()
+        {
+            if (!products.Any())
+            {
+                Log("\nNo products in inventory.");
+                return;
+            }
+
+            products.Sort();
+            Log("\nProducts in Inventory sorted based on Name-price:");
+            foreach (var product in products)
+            {
+                Log(product.ToString());
+            }
+
+
+        }
         private void Log(string message)
         {
             Console.WriteLine($"{message}");

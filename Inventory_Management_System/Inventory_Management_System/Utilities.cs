@@ -27,8 +27,9 @@ namespace Inventory_Management_System
                 Console.WriteLine("---------------------- Inventory Management System ----------------------");
 
 
-                Console.WriteLine("1. Add a product"); 
-                Console.Write("Please select an option: ");
+                Console.WriteLine("1. Add a product");
+                Console.WriteLine("2. View all products");
+                Console.Write("Please select an option (1 - 2): ");
 
                 string choice = Console.ReadLine();
 
@@ -36,6 +37,9 @@ namespace Inventory_Management_System
                 {
                     case "1":
                         AddProduct();
+                        break;
+                    case "2":
+                        ViewAllProducts();
                         break;
                     default:
                         Console.WriteLine("Invalid option. Please try again.\n");
@@ -45,6 +49,7 @@ namespace Inventory_Management_System
         }
         static void AddProduct()
         {
+            ViewAllProducts();
             Console.Write("Enter product name (more than 2 characters): ");
             string name = Console.ReadLine();
 
@@ -58,8 +63,12 @@ namespace Inventory_Management_System
             int quantity = Convert.ToInt32(Console.ReadLine());
 
             inventory.AddProduct(name, price, currency, quantity);
-            
+
         }
-       
+        static void ViewAllProducts()
+        {
+            inventory.ViewAllProducts();
+            Console.WriteLine();
+        }
     }
 }

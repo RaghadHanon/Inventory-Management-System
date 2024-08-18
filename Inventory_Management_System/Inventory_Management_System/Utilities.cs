@@ -34,7 +34,8 @@ namespace Inventory_Management_System
                 Console.WriteLine("3. Edit a product");
                 Console.WriteLine("4. Delete a product");
                 Console.WriteLine("5. Search for a product");
-                Console.Write("Please select an option (1 - 5): ");
+                Console.WriteLine("6. Exit");
+                Console.Write("Please select an option (1-6): ");
 
                 string choice = Console.ReadLine();
 
@@ -54,6 +55,10 @@ namespace Inventory_Management_System
                         break;
                     case "5":
                         SearchProduct();
+                        break;
+                    case "6":
+                        ExitApplication();
+                        exit = true;
                         break;
                     default:
                         Console.WriteLine("Invalid option. Please try again.\n");
@@ -121,6 +126,10 @@ namespace Inventory_Management_System
             Console.Write("Enter the name of the product you want to search for: ");
             string name = Console.ReadLine();
             inventory.SearchProduct(name);
+        }
+        static void ExitApplication()
+        {
+            Console.WriteLine("Exiting the application.");
         }
     }
 }

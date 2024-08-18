@@ -76,6 +76,19 @@ namespace Inventory_Management_System.InventoryManagement
             products.Remove(product);
 
         }
+        // Search for a product by name
+        public void SearchProduct(string name)
+        {
+            var product = FindProductByName(name);
+            if (product == null)
+            {
+                Log($"\nProduct '{name}' not found.");
+            }
+            else
+            {
+                Log($"\nProduct: {product.ToString()}");
+            }
+        }
         private void Log(string message)
         {
             Console.WriteLine($"{message}");

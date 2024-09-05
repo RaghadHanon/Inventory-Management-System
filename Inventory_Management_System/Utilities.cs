@@ -111,18 +111,31 @@ namespace Inventory_Management_System
 
             Console.Write("Enter new product price (or press Enter to skip): ");
             string? priceInput = Console.ReadLine();
-            decimal? newPrice = !string.IsNullOrEmpty(priceInput) ? Convert.ToDecimal(priceInput) : (decimal?)null;
+            decimal? newPrice = null;
+            if (!string.IsNullOrEmpty(priceInput) && decimal.TryParse(priceInput, out decimal parsedPrice))
+            {
+                newPrice = parsedPrice;
+            }
 
             Console.Write("Enter new currency (Dollar/Euro/Pound or press Enter to skip): ");
             string? currencyInput = Console.ReadLine();
-            Currency? newCurrency = !string.IsNullOrEmpty(currencyInput) ? (Currency)Enum.Parse(typeof(Currency), currencyInput, true) : (Currency?)null;
+            Currency? newCurrency = null;
+            if (!string.IsNullOrEmpty(currencyInput) && Enum.TryParse<Currency>(currencyInput, true, out Currency parsedCurrency))
+            {
+                newCurrency = parsedCurrency;
+            }
 
             Console.Write("Enter new product quantity (or press Enter to skip): ");
             string? quantityInput = Console.ReadLine();
-            int? newQuantity = !string.IsNullOrEmpty(quantityInput) ? Convert.ToInt32(quantityInput) : (int?)null;
+            int? newQuantity = null;
+            if (!string.IsNullOrEmpty(quantityInput) && int.TryParse(quantityInput, out int parsedQuantity))
+            {
+                newQuantity = parsedQuantity;
+            }
 
             inventory.EditProduct(name, newName, newPrice, newCurrency, newQuantity);
         }
+
         static void DeleteProduct()
         {
             Console.Write("Enter the name of the product you want to delete: ");

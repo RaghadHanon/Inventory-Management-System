@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory_Management_System.ProductManagement
-{
+namespace Inventory_Management_System.ProductManagement;
     internal class ProductValidator
     {
         public static void Validate(Product product, string? name = null, decimal? price = null, Currency? currency = null, int? quantity = null)
@@ -26,4 +25,3 @@ namespace Inventory_Management_System.ProductManagement
             }
         }
     }
-}

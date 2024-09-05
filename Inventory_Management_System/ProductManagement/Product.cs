@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory_Management_System.ProductManagement
-{
+namespace Inventory_Management_System.ProductManagement;
 
     public class Product : IComparable<Product>
     {
@@ -90,4 +89,4 @@ namespace Inventory_Management_System.ProductManagement
             return $"ID: {_id}, Name: {Name}, Quantity: {Quantity}, {Price}";
         }
     }
-}
+

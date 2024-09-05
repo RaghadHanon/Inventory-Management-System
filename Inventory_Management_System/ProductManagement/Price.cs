@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory_Management_System.ProductManagement
-{
+namespace Inventory_Management_System.ProductManagement;
 
     public class Price : IComparable<Price>
     {
@@ -64,4 +63,4 @@ namespace Inventory_Management_System.ProductManagement
 
         public override string ToString() => $"Price: {ItemPrice} {Currency}";
     }
-}
+

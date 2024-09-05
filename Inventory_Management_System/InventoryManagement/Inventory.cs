@@ -6,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory_Management_System.InventoryManagement
-{
+namespace Inventory_Management_System.InventoryManagement;
     public class Inventory
     {
         private List<Product> _products = new List<Product>();
@@ -75,4 +74,3 @@ namespace Inventory_Management_System.InventoryManagement
         }
       
     }
-}

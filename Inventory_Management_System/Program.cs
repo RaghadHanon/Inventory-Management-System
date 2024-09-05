@@ -1,7 +1,6 @@
 ﻿using Inventory_Management_System.Utility;
 
-namespace Inventory_Management_System
-{
+namespace Inventory_Management_System;
     internal class Program
     {
         static void Main(string[] args)
@@ -10,4 +9,4 @@ namespace Inventory_Management_System
             Utilities.ShowMainMenu();
         }
     }
-}
+

@@ -3,8 +3,7 @@ using Inventory_Management_System.ProductManagement;
 using System.Diagnostics;
 using System.Xml.Linq;
 
-namespace Inventory_Management_System.Utility
-{
+namespace Inventory_Management_System.Utility;
     internal class Utilities
     {
         static Inventory inventory = new Inventory();
@@ -155,4 +154,4 @@ namespace Inventory_Management_System.Utility
             Console.WriteLine("Exiting the application.");
         }
     }
-}
+

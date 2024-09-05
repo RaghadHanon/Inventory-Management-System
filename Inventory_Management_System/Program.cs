@@ -1,4 +1,6 @@
-﻿namespace Inventory_Management_System
+﻿using Inventory_Management_System.Utility;
+
+namespace Inventory_Management_System
 {
     internal class Program
     {

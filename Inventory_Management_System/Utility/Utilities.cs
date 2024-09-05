@@ -3,7 +3,7 @@ using Inventory_Management_System.ProductManagement;
 using System.Diagnostics;
 using System.Xml.Linq;
 
-namespace Inventory_Management_System
+namespace Inventory_Management_System.Utility
 {
     internal class Utilities
     {
@@ -120,7 +120,7 @@ namespace Inventory_Management_System
             Console.Write("Enter new currency (Dollar/Euro/Pound or press Enter to skip): ");
             string? currencyInput = Console.ReadLine();
             Currency? newCurrency = null;
-            if (!string.IsNullOrEmpty(currencyInput) && Enum.TryParse<Currency>(currencyInput, true, out Currency parsedCurrency))
+            if (!string.IsNullOrEmpty(currencyInput) && Enum.TryParse(currencyInput, true, out Currency parsedCurrency))
             {
                 newCurrency = parsedCurrency;
             }

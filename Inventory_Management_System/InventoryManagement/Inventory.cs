@@ -1,4 +1,5 @@
 ﻿using Inventory_Management_System.ProductManagement;
+using Inventory_Management_System.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,15 @@ namespace Inventory_Management_System.InventoryManagement
         {
             if (!_products.Any())
             {
-                Log("\nNo products in inventory.");
+                Logger.Log("\nNo products in inventory.");
                 return;
             }
 
             _products.Sort();
-            Log("\nProducts in Inventory sorted based on Name-price:");
+            Logger.Log("\nProducts in Inventory sorted based on Name-price:");
             foreach (var product in _products)
             {
-                Log(product.ToString());
+                Logger.Log(product.ToString());
             }
 
 
@@ -38,7 +39,7 @@ namespace Inventory_Management_System.InventoryManagement
             var product = FindProductByName(name);
             if (product == null)
             {
-                Log($"\nProduct '{name}' not found.");
+                Logger.Log($"\nProduct '{name}' not found.");
                 return;
             }
             ProductValidator.Validate(product ,newName, newPrice,newCurrency ,newQuantity);
@@ -53,7 +54,7 @@ namespace Inventory_Management_System.InventoryManagement
             var product = FindProductByName(name);
             if (product == null)
             {
-                Console.WriteLine($"Product '{name}' not found.");
+                Logger.Log($"Product '{name}' not found.");
                 return;
             }
 
@@ -65,16 +66,13 @@ namespace Inventory_Management_System.InventoryManagement
             var product = FindProductByName(name);
             if (product == null)
             {
-                Log($"\nProduct '{name}' not found.");
+                Logger.Log($"\nProduct '{name}' not found.");
             }
             else
             {
-                Log($"\nProduct: {product.ToString()}");
+                Logger.Log($"\nProduct: {product.ToString()}");
             }
         }
-        private void Log(string message)
-        {
-            Console.WriteLine($"{message}");
-        }
+      
     }
 }

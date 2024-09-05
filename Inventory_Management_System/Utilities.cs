@@ -1,5 +1,7 @@
 ﻿using Inventory_Management_System.InventoryManagement;
 using Inventory_Management_System.ProductManagement;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace Inventory_Management_System
 {
@@ -10,11 +12,16 @@ namespace Inventory_Management_System
         internal static void InitializeStock()
         {
             // stock initialization
-            inventory.AddProduct("Laptop", 1200.00m, Currency.Dollar, 10);
-            inventory.AddProduct("Smartphone", 800.00m, Currency.Euro, 25);
-            inventory.AddProduct("Headphones", 150.00m, Currency.Pound, 50);
-            inventory.AddProduct("Tablet", 400.00m, Currency.Dollar, 15);
-            inventory.AddProduct("Smartwatch", 200.00m, Currency.Euro, 30);
+            var product = new Product("Laptop", 10, new Price(1200.00m, Currency.Dollar));
+            inventory.AddProduct(product);
+            product = new Product("Smartphone", 25, new Price(800.00m, Currency.Euro));
+            inventory.AddProduct(product);
+            product = new Product("Headphones", 50, new Price(150.00m, Currency.Pound));
+            inventory.AddProduct(product);
+            product = new Product("Tablet", 25, new Price(400.00m, Currency.Dollar));
+            inventory.AddProduct(product);
+            product = new Product("Smartwatch", 30, new Price(200.00m, Currency.Euro));
+            inventory.AddProduct(product);
 
         }
 
@@ -80,7 +87,10 @@ namespace Inventory_Management_System
             Console.Write("Enter product quantity (non-negativ negative): ");
             int quantity = Convert.ToInt32(Console.ReadLine());
 
-            inventory.AddProduct(name, price, currency, quantity);
+            var productPrice = new Price(price, currency);
+            var product = new Product(name, quantity, productPrice);
+
+            inventory.AddProduct(product);
 
         }
         static void ViewAllProducts()

@@ -10,15 +10,12 @@ namespace Inventory_Management_System.InventoryManagement
     public class Inventory
     {
         private List<Product> _products = new List<Product>();
-        // Add a product to the inventory
-        public void AddProduct(string name, decimal price, Currency currency, int quantity)
+        public void AddProduct(Product product)
         {
-            var productPrice = new Price(price, currency);
-            var product = new Product(name, quantity, productPrice);
+            
             _products.Add(product);
 
         }
-        // View all products in the inventory
         public void ViewAllProducts()
         {
             if (!_products.Any())
@@ -36,7 +33,6 @@ namespace Inventory_Management_System.InventoryManagement
 
 
         }
-        // Edit an existing product
         public void EditProduct(string name, string newName = null, decimal? newPrice = null, Currency? newCurrency = null, int? newQuantity = null)
         {
             var product = FindProductByName(name);
@@ -58,12 +54,10 @@ namespace Inventory_Management_System.InventoryManagement
             if (newQuantity != null) product.Quantity = newQuantity.Value;
 
         }
-        // Helper method to find a product by name
         private Product FindProductByName(string name)
         {
             return _products.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
         }
-        // Delete a product from the inventory
         public void DeleteProduct(string name)
         {
             var product = FindProductByName(name);
@@ -76,7 +70,6 @@ namespace Inventory_Management_System.InventoryManagement
             _products.Remove(product);
 
         }
-        // Search for a product by name
         public void SearchProduct(string name)
         {
             var product = FindProductByName(name);

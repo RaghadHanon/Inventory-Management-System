@@ -9,16 +9,16 @@ namespace Inventory_Management_System.ProductManagement
 
     public class Price : IComparable<Price>
     {
-        private readonly decimal itemPrice;
+        private readonly decimal _itemPrice;
 
         public decimal ItemPrice
         {
-            get => itemPrice;
+            get => _itemPrice;
             init
             {
                 if (value < 0)
                     throw new ArgumentException("Product price cannot be negative.");
-                itemPrice = value;
+                _itemPrice = value;
             }
         }
 

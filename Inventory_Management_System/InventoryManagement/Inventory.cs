@@ -9,27 +9,27 @@ namespace Inventory_Management_System.InventoryManagement
 {
     public class Inventory
     {
-        private List<Product> products = new List<Product>();
+        private List<Product> _products = new List<Product>();
         // Add a product to the inventory
         public void AddProduct(string name, decimal price, Currency currency, int quantity)
         {
             var productPrice = new Price(price, currency);
             var product = new Product(name, quantity, productPrice);
-            products.Add(product);
+            _products.Add(product);
 
         }
         // View all products in the inventory
         public void ViewAllProducts()
         {
-            if (!products.Any())
+            if (!_products.Any())
             {
                 Log("\nNo products in inventory.");
                 return;
             }
 
-            products.Sort();
+            _products.Sort();
             Log("\nProducts in Inventory sorted based on Name-price:");
-            foreach (var product in products)
+            foreach (var product in _products)
             {
                 Log(product.ToString());
             }
@@ -61,7 +61,7 @@ namespace Inventory_Management_System.InventoryManagement
         // Helper method to find a product by name
         private Product FindProductByName(string name)
         {
-            return products.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
+            return _products.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
         }
         // Delete a product from the inventory
         public void DeleteProduct(string name)
@@ -73,7 +73,7 @@ namespace Inventory_Management_System.InventoryManagement
                 return;
             }
 
-            products.Remove(product);
+            _products.Remove(product);
 
         }
         // Search for a product by name

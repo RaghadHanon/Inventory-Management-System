@@ -9,32 +9,32 @@ namespace Inventory_Management_System.ProductManagement
 
     public class Product : IComparable<Product>
     {
-        private static int currentId = 0;
-        private readonly int id;
-        private string name = string.Empty;
+        private static int _currentId = 0;
+        private readonly int _id;
+        private string _name = string.Empty;
 
         public string Name
         {
-            get => name;
+            get => _name;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Product name cannot be null or whitespace.");
                 if (value.Length < 2)
                     throw new ArgumentException("Product name cannot be less than 2 characters.");
-                name = value;
+                _name = value;
             }
         }
 
-        private int quantity;
+        private int _quantity;
         public int Quantity
         {
-            get => quantity;
+            get => _quantity;
             set
             {
                 if (value < 0)
                     throw new ArgumentException("Product quantity cannot be negative.");
-                quantity = value;
+                _quantity = value;
             }
         }
 
@@ -42,7 +42,7 @@ namespace Inventory_Management_System.ProductManagement
 
         public Product(string name, int quantity, Price price)
         {
-            id = ++currentId;
+            _id = ++_currentId;
             Name = name;
             Quantity = quantity;
             Price = price ?? throw new ArgumentNullException(nameof(price), "Price cannot be null.");
@@ -87,7 +87,7 @@ namespace Inventory_Management_System.ProductManagement
 
         public override string ToString()
         {
-            return $"ID: {id}, Name: {Name}, Quantity: {Quantity}, {Price}";
+            return $"ID: {_id}, Name: {Name}, Quantity: {Quantity}, {Price}";
         }
     }
 }

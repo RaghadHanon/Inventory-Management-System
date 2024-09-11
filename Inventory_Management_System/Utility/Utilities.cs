@@ -7,17 +7,16 @@ internal class Utilities
     static Inventory inventory = new Inventory();
     internal static void InitializeStock()
     {
-        var product = new Product("Laptop", 10, new Price(1200.00m, Currency.Dollar));
-        inventory.AddProduct(product);
-        product = new Product("Smartphone", 25, new Price(800.00m, Currency.Euro));
-        inventory.AddProduct(product);
-        product = new Product("Headphones", 50, new Price(150.00m, Currency.Pound));
-        inventory.AddProduct(product);
-        product = new Product("Tablet", 25, new Price(400.00m, Currency.Dollar));
-        inventory.AddProduct(product);
-        product = new Product("Smartwatch", 30, new Price(200.00m, Currency.Euro));
-        inventory.AddProduct(product);
+        var products = new List<Product>
+        {
+                new Product("Laptop", 10, new Price(1200.00m, Currency.Dollar)),
+                new Product("Smartphone", 25, new Price(800.00m, Currency.Euro)),
+                new Product("Headphones", 50, new Price(150.00m, Currency.Pound)),
+                new Product("Tablet", 25, new Price(400.00m, Currency.Dollar)),
+                new Product("Smartwatch", 30, new Price(200.00m, Currency.Euro))
+        };
 
+        inventory.AddRange(products);
     }
 
     internal static void ShowMainMenu()

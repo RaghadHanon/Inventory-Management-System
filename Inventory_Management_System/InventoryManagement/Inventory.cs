@@ -59,4 +59,9 @@ public class Inventory
             new ConsoleLogger().Log($"\nProduct: {product.ToString()}");
         }
     }
+
+    internal void AddRange(List<Product> products)
+    {
+        _products = products;
+    }
 }

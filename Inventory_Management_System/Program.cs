@@ -1,10 +1,12 @@
-﻿namespace Inventory_Management_System
-{
+﻿using Inventory_Management_System.Utility;
+
+namespace Inventory_Management_System;
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Utilities.InitializeStock();
+            Utilities.ShowMainMenu();
         }
     }
-}
+

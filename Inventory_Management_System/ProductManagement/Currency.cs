@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Inventory_Management_System.ProductManagement
+﻿namespace Inventory_Management_System.ProductManagement;
+public enum Currency
 {
-    public enum Currency
-    {
-        Dollar,
-        Euro,
-        Pound
-    }
+    Dollar,
+    Euro,
+    Pound
 }
+
